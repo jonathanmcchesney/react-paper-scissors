@@ -1,0 +1,15 @@
+.results-titles-container > h1 {
+    font-size: 100px;
+}
+
+.results-options-container {
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.results-reset-button {
+    margin-top: 40px;
+    font-size: 24px;
+}

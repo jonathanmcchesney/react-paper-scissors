@@ -1,0 +1,19 @@
+.option-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+}
+
+.option-emoji {
+    font-size: 100px;
+    margin-bottom: 16px;
+}
+
+.option-button {
+    font-size: 24px;
+}
+
+.option-choice-label {
+    font-size: 20px;
+}
