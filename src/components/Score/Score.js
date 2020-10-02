@@ -20,7 +20,7 @@ class Score extends Component {
 
     render() {
         return (
-            <div className='score'>
+            <div className='score__container'>
                 {this.renderScoreTable()}
             </div>
         );

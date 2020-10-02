@@ -1,5 +1,5 @@
 
-.score {
+.score__container {
   margin-top: 1rem;
 }
 .score__table, .score__table-header, .score__table-row {
