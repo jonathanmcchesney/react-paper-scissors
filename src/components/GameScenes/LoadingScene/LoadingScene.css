@@ -1,0 +1,35 @@
+.loading-titles-container > h1 {
+    font-size: 100px;
+}
+
+.loading-emojis-container {
+    position: relative;
+    margin-top: 50px;
+}
+
+.fist-emoji {
+    font-size: 100px;
+    position: absolute;
+}
+
+.left-fist {
+    left: -105px;
+    animation: left-fist-animation 0.5s infinite ease-in;
+}
+
+.right-fist {
+    right: -95px;
+    animation: right-fist-animation 0.5s infinite ease-in;
+}
+
+@keyframes left-fist-animation {
+    0%   { left: -105px; }
+    75%  { left: -200px; }
+    100% { left: -105px; }
+}
+
+@keyframes right-fist-animation {
+    0%   { right: -95px; }
+    75%  { right: -190px; }
+    100% { right: -95px; }
+}
