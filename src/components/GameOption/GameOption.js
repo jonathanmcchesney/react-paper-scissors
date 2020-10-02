@@ -30,7 +30,7 @@ class GameOption extends Component {
             return (
                 <div className='option-container'>
                     <span role='img' aria-label={this.props.type} className='option-emoji'>{emoji}</span>
-                    <button className='option-button' value={this.props.type} onClick={this.handleClick}>Select {this.props.type}</button>
+                    <button className='option-button' value={this.props.type} onClick={this.handleClick}>Choose {this.props.type}</button>
                 </div>
             )
         } else {
