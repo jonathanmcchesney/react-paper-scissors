@@ -23,13 +23,13 @@
 }
 
 @keyframes left-fist-animation {
-    0%   { left: -105px; }
-    75%  { left: -200px; }
-    100% { left: -105px; }
+    0%   { left: -105px; top: 0px;   transform: rotate(0deg);   }
+    75%  { left: -200px; top: -50px; transform: rotate(-40deg); }
+    100% { left: -105px; top: 0px;   transform: rotate(0deg);   }
 }
 
 @keyframes right-fist-animation {
-    0%   { right: -95px; }
-    75%  { right: -190px; }
-    100% { right: -95px; }
+    0%   { right: -95px;  top:0px;    transform: rotate(0deg);  }
+    75%  { right: -190px; top: -50px; transform: rotate(40deg); }
+    100% { right: -95px;  top: 0px;   transform: rotate(0deg);  }
 }
