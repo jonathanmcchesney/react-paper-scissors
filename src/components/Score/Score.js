@@ -9,10 +9,10 @@ class Score extends Component {
         return (
         <table className="score__table">
             <thead>    
-                {scores.map((score, index) => <th className="score__table-header" key={`header_${index}`}>{capitaliseString(score.header)}</th>)}
+                <tr>{scores.map((score, index) => <th className="score__table-header" key={`header_${index}`}>{capitaliseString(score.header)}</th>)}</tr>
             </thead>
             <tbody>
-                {scores.map((score, index) => <td className="score__table-row" key={`value_${index}`}>{score.value}</td>)}
+                <tr>{scores.map((score, index) => <td className="score__table-row" key={`value_${index}`}>{score.value}</td>)}</tr>
             </tbody>
         </table> 
       )
