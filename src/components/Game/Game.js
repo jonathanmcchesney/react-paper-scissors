@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SelectScene from '../GameScenes/SelectScene/SelectScene';
 import ResultsScene from '../GameScenes/ResultsScene/ResultsScene';
 import './Game.css';
+import LoadingScene from '../GameScenes/LoadingScene/LoadingScene';
 
 class Game extends Component {
     
@@ -9,8 +10,10 @@ class Game extends Component {
         super();
         this.state = {
             playerOption: '',
-            computerOption: ''
+            computerOption: '',
+            showLoadingScene: false
         };
+        this.flipShowLoadingScene = this.flipShowLoadingScene.bind(this);
         this.setPlayerOption = this.setPlayerOption.bind(this);
         this.resetGameState = this.resetGameState.bind(this);
     }
@@ -25,28 +28,46 @@ class Game extends Component {
         return options[randomIndex];
     }
 
+    flipShowLoadingScene() {
+        this.setState({
+            showLoadingScene: !this.state.showLoadingScene
+        });
+    }
+
     setPlayerOption(chosenOption) {
         this.setState({
             playerOption: chosenOption,
-            computerOption: this.generateComputerOption()
+            computerOption: this.generateComputerOption(),
         });
+        this.flipShowLoadingScene()
     }
 
     resetGameState() {
         this.setState({
             playerOption: '',
-            computerOption: ''
+            computerOption: '',
+            showLoadingScene: false
         })
     }
 
+    determineScene() {
+        let sceneToDraw;
+
+        if (this.state.showLoadingScene === true) {
+            sceneToDraw = <LoadingScene flipShowLoadingScene={this.flipShowLoadingScene}/>
+        } else {
+            sceneToDraw = this.state.playerOption === '' 
+                ? <SelectScene setPlayerOption={this.setPlayerOption}/>
+                : <ResultsScene playerOption={this.state.playerOption} computerOption={this.state.computerOption} setPlayerOption={this.setPlayerOption} resetGameState={this.resetGameState}/>;
+        }
+
+        return sceneToDraw
+    }
 
     render() {
         return (
             <div className='game-container'>
-                { this.state.playerOption === ''
-                   ? <SelectScene setPlayerOption={this.setPlayerOption}/>
-                   : <ResultsScene playerOption={this.state.playerOption} computerOption={this.state.computerOption} setPlayerOption={this.setPlayerOption} resetGameState={this.resetGameState}/>
-                }
+                {this.determineScene()}
             </div>
         );
     }
