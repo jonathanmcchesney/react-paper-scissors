@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Score.css';
 import capitaliseString from '../../utils/capitaliseString'
 
 class Score extends Component {

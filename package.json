@@ -14,7 +14,9 @@
     "customize-cra": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.3"
+    "react-hooks": "^1.0.1",
+    "react-scripts": "^3.4.3",
+    "styled-components": "^5.2.0"
   },
   "scripts": {
     "dev": "react-scripts start",
@@ -38,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "file-loader": "^6.1.0"
   }
 }

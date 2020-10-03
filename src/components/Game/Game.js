@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import SelectScene from '../GameScenes/SelectScene/SelectScene';
-import ResultsScene from '../GameScenes/ResultsScene/ResultsScene';
-import './Game.css';
-import LoadingScene from '../GameScenes/LoadingScene/LoadingScene';
-import Score from '../Score/Score';
+import SelectScene from '../GameScenes/SelectScene';
+import ResultsScene from '../GameScenes/ResultsScene';
+import LoadingScene from '../GameScenes/LoadingScene';
+import Score from '../Score';
+import ThemeToggle from '../ThemeToggle';
 
 class Game extends Component {
     
@@ -94,7 +94,10 @@ class Game extends Component {
     render() {
         return (
             <div className='game-container'>
-                <Score score={this.state.score} /> 
+                <div className='header__container'>
+                    <Score score={this.state.score} /> 
+                    <ThemeToggle theme={this?.props?.theme} toggleTheme={this.props.toggleTheme} />
+                </div>
                 {this.determineScene()}
             </div>
         );

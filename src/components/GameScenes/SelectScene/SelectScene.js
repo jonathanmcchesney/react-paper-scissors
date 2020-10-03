@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import GameOption from '../../GameOption/GameOption';
-import './SelectScene.css';
+import GameOption from '../../GameOption';
 
 class SelectScene extends Component {
     

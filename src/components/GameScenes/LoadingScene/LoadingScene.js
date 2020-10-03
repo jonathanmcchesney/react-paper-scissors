@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './LoadingScene.css';
 
 const optionStrings = ['ROCK!', 'PAPER!', 'SCISSORS!'];
 

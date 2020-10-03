@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './GameOption.css';
 
 class GameOption extends Component {
     
