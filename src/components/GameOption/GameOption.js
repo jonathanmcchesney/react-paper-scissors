@@ -19,7 +19,6 @@ class GameOption extends Component {
     }
 
     handleClick(e) {
-        console.log(e.target.value);
         this.props.setPlayerOption(e.target.value);
     }
 

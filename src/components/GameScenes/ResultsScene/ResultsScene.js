@@ -32,7 +32,6 @@ class ResultsScene extends Component {
     }
 
     render() {
-        console.log('test', this.state.result)
         return (
             <>
                 <div className='results-titles-container'>
