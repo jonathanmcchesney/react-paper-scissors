@@ -1,0 +1,12 @@
+
+.score__container {
+  margin-top: 1rem;
+}
+.score__table, .score__table-header, .score__table-row {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.score__table-header, .score__table-row {
+  padding: 1rem;
+  text-align: left;
+}

@@ -3,6 +3,7 @@ import SelectScene from '../GameScenes/SelectScene/SelectScene';
 import ResultsScene from '../GameScenes/ResultsScene/ResultsScene';
 import './Game.css';
 import LoadingScene from '../GameScenes/LoadingScene/LoadingScene';
+import Score from '../Score/Score';
 
 class Game extends Component {
     
@@ -11,11 +12,17 @@ class Game extends Component {
         this.state = {
             playerOption: '',
             computerOption: '',
+            score: {
+                wins: Number(localStorage.getItem('wins')) || 0,
+                losses: Number(localStorage.getItem('losses')) || 0,
+                draws: Number(localStorage.getItem('draws')) || 0,
+            },
             showLoadingScene: false
         };
         this.flipShowLoadingScene = this.flipShowLoadingScene.bind(this);
         this.setPlayerOption = this.setPlayerOption.bind(this);
         this.resetGameState = this.resetGameState.bind(this);
+        this.updateScore = this.updateScore.bind(this);
     }
 
     generateComputerOption() {
@@ -29,25 +36,45 @@ class Game extends Component {
     }
 
     flipShowLoadingScene() {
-        this.setState({
-            showLoadingScene: !this.state.showLoadingScene
-        });
+        this.setState(prevState => ({
+            ...prevState,
+            showLoadingScene: !prevState.showLoadingScene,
+        }));
     }
 
     setPlayerOption(chosenOption) {
-        this.setState({
+        this.setState(prevState => ({
+            ...prevState,
             playerOption: chosenOption,
             computerOption: this.generateComputerOption(),
-        });
+        })) ;
         this.flipShowLoadingScene()
     }
 
     resetGameState() {
-        this.setState({
+        this.setState(prevState => ({
+            ...prevState,
             playerOption: '',
             computerOption: '',
             showLoadingScene: false
-        })
+        }))
+    }
+
+    incrementValueOrUseCurrent(shouldIncrement, currentValue) {
+        return shouldIncrement ? currentValue +1 : currentValue;
+    }
+
+    updateScore({isWin, isLoss, isDraw}) {
+        const {wins, losses, draws} = this.state.score;
+        const newScore = {
+            wins: this.incrementValueOrUseCurrent(isWin, wins), 
+            losses: this.incrementValueOrUseCurrent(isLoss, losses), 
+            draws: this.incrementValueOrUseCurrent(isDraw, draws )
+        }
+        localStorage.setItem('wins', newScore.wins)
+        localStorage.setItem('losses', newScore.losses)
+        localStorage.setItem('draws', newScore.draws)
+        this.setState(prevState => ({...prevState, score: newScore})); 
     }
 
     determineScene() {
@@ -58,7 +85,7 @@ class Game extends Component {
         } else {
             sceneToDraw = this.state.playerOption === '' 
                 ? <SelectScene setPlayerOption={this.setPlayerOption}/>
-                : <ResultsScene playerOption={this.state.playerOption} computerOption={this.state.computerOption} setPlayerOption={this.setPlayerOption} resetGameState={this.resetGameState}/>;
+                : <ResultsScene playerOption={this.state.playerOption} computerOption={this.state.computerOption} setPlayerOption={this.setPlayerOption} resetGameState={this.resetGameState} updateScore={this.updateScore}/>;
         }
 
         return sceneToDraw
@@ -67,6 +94,7 @@ class Game extends Component {
     render() {
         return (
             <div className='game-container'>
+                <Score score={this.state.score} /> 
                 {this.determineScene()}
             </div>
         );
