@@ -38,7 +38,7 @@ class Game extends Component {
     flipShowLoadingScene() {
         this.setState(prevState => ({
             ...prevState,
-            showLoadingScene: !prevState.showLoadingScene,
+            showLoadingScene: !prevState?.showLoadingScene,
         }));
     }
 
